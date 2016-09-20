@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单事件</title>
+    <script>
+        // onreset , onsubmit , submit()
+        window.onload = function () {
+            oForm = document.getElementById('form1');
+
+            oForm.onsubmit = function () {
+                if(oForm.text1.value == ''){
+                    alert('请输入内容后提交！');
+                    return false;
+                }
+            };
+
+            oForm.onreset = function () {
+                var des =confirm('Are you sure?');
+                return des ?  true: false;
+
+
+//                if (confirm('Are you sure?')){
+//                }else {
+//                    return false;
+//                }
+
+            }
+
+//            setTimeout(function () {
+//                if(oForm.text1.value == ''){
+//                    alert('请输入内容后提交！');
+//                    return false;
+//                }else {
+//                    oForm.submit();
+//                }
+//            },1500)
+
+        }
+    </script>
+</head>
+<body>
+<form action="http://www.baidu.com" id="form1">
+    <input type="text" name="text1">
+    <input type="submit" name="dosubmit" value="提交">
+    <input type="reset" name="doreset" value="重置">
+</form>
+</body>
+</html>

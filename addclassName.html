@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addclassName</title>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            addClassName(oDiv, 'box');
+            alert(oDiv.className)
+
+            function addClassName( obj, className ) {
+
+                if (obj.className == ''){
+                    obj.className = className;
+                } else{
+                    if(hasClassName( obj,className ) == -1){
+                        obj.className += ' '+ className;
+                    }else {}
+                }
+            }
+
+            function hasClassName( obj,v ) {
+                var classNames = obj.className.split(' ');
+                for(var i=0;i<classNames.length;i++){
+                    if (classNames[i] == v){
+                        return i;
+                    }else {
+                        return -1
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="box box"></div>
+</body>
+</html>

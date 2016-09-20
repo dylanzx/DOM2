@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oForm = document.getElementById('form1');
+
+            //onchange 当值发生改变的时候触发
+            /*
+            * text : 当光标离开的时候如果内容改变就会触发
+            * radio/checkbox ： 标准下点击的时候只要值变了那么就会触发
+            *           非标准下，焦点离开的时候如果值变了就会触发
+            * */
+
+            oForm.sex[0].onchange = function () {
+                alert(1);
+            }
+            oForm.a[0].onchange = function () {
+                alert(2)
+
+            }
+            oForm.city.onchange = function () {
+                alert(this.value)
+            }
+            oForm.btn.onclick= function () {
+                alert(oForm.a[0].checked)
+            }
+            oForm.btn1.onclick = function () {
+                for (var i=0;i<oForm.a.length;i++){
+                    oForm.a[i].checked = true;
+                }
+            }
+
+            oForm.btn2.onclick = function () {
+                for (var i=0;i<oForm.a.length;i++){
+                    if(oForm.a[i].checked){
+                        oForm.a[i].checked = false;
+                    }else {
+                        oForm.a[i].checked = true;
+
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="" id="form1">
+    <input type="text" name="text1" value='文本'>
+    <input type="radio" name="sex" value='male'>男
+    <input type="radio" name="sex" value='female'>女
+
+    <input type="checkbox" name="a" value="html" checked>html
+    <input type="checkbox" name="a" value="css">css
+    <input type="checkbox" name="a" value="javascript">javascript
+
+    <select name="city">
+        <option>choose city</option>
+        <option value="beijing">beijing</option>
+        <option value="shanghai" selected>shanghai</option>
+    </select>
+    <input type="button" name="btn" value="检查">
+    <input type="button" name="btn1" value="全选">
+    <input type="button" name="btn2" value="反选">
+
+</form>
+</body>
+</html>
