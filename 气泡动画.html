@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>气泡动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #000;
+        }
+        canvas{
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oC = document.getElementById('can');
+            var oGc = oC.getContext('2d');
+            var arr = [];
+
+            setInterval(function () {
+                var x = Math.floor(oC.width/2);
+                var y = Math.floor(oC.height);
+                var r = 10;
+                var co1 = Math.floor(Math.random()*255);
+                var co2 = Math.floor(Math.random()*255);
+                var co3 = Math.floor(Math.random()*255);
+                var co4 = 1;
+                var vx = (Math.random()-0.5)*2;
+                var vy = -(Math.random()*3) -1;
+                b = {
+                    x : x,
+                    y : y,
+                    r : r,
+                    co1 : co1,
+                    co2 : co2,
+                    co3 : co3,
+                    co4 : co4,
+                    vx : vx,
+                    vy : vy
+                }
+
+                arr.push( b );
+            },200);
+
+            setInterval(function () {
+                oGc.clearRect(0,0,oC.width, oC.height)
+
+                for( var i=0;i<arr.length;i++){
+                    arr[i].co4 -= 0.0008
+
+                    if( arr[i].co4 <= 0){
+                        arr.splice( i,1 )
+                    }
+                    arr[i].vy += 0.005
+                    arr[i].x += arr[i].vx
+                    arr[i].y += arr[i].vy
+
+                    if( arr[i].y >= oC.height - arr[i].r ){
+                        arr[i].y = oC.height - arr[i].r
+                        arr[i].vy = -arr[i].vy;
+                        arr[i].vx = 0.9*arr[i].vx;
+                        arr[i].vy = 0.9*arr[i].vy;
+
+                    }
+                    if( Math.abs(arr[i].vy)< 0.001 || Math.abs(arr[i].vx< 0.001) ){
+                        arr.splice(i,1)
+                    }
+                }
+                for ( var i = 0;i<arr.length;i++) {
+
+                    oGc.beginPath();
+                    oGc.fillStyle = 'rgba( '+arr[i].co1+','+arr[i].co2+','+arr[i].co3+','+arr[i].co4+' )';
+                    oGc.moveTo(arr[i].x,arr[i].y);
+                    oGc.arc(arr[i].x, arr[i].y, arr[i].r, 0, Math.PI * 2, false);
+                    oGc.closePath();
+                    oGc.fill()
+
+                }
+            },1000/60)
+
+        }
+    </script>
+</head>
+<body>
+<canvas id="can" height="500px" width="1600px"></canvas>
+</body>
+</html>
