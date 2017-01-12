@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            display: block;
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oImg = document.getElementById('img1');
+
+            if( document.documentElement.scrollTop == 0 && document.body.scrollTop == 0){
+                oImg.style.display = 'none'
+            }
+
+            document.onscroll = function () {
+
+                if( document.documentElement.scrollTop == 0 && document.body.scrollTop == 0){
+                    oImg.style.display = 'none'
+                }else {
+                    oImg.style.display = 'block'
+                }
+            };
+            oImg.onclick = function () {
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }
+
+        }
+    </script>
+</head>
+<body style="height: 2000px">
+<img src="images/返回顶部.gif" alt="" id="img1">
+</body>
+</html>

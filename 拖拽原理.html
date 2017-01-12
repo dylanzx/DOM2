@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽原理</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            /*
+            * 拖拽用到的事件函数：
+            * onmousedown
+            * onmousemove
+            * onmouseup
+            * */
+
+            /*
+            * 当选中其他元素时候，再进行拖拽就会出现问题。
+            * 解决方案：
+            *           标准下，阻值浏览器默认行为
+            *           非标准IE下，通过全局捕获与全局释放来解决问题
+            *
+            * 图片的问题用相同的方法来解决。
+            *
+            * */
+            var oDiv = document.getElementById('div1');
+
+            oDiv.onmousedown = function (ev) {           //注意offsetLeft 返回的是数字，而style.left 返回的是字符串；
+                var ev = ev || event;
+                var x = ev.clientX - this.offsetLeft;
+                var y = ev.clientY - this.offsetTop;
+
+                if( oDiv.setCapture() ){
+                    oDiv.setCapture()
+                }
+
+                document.onmousemove = function ( ev ) {
+                    var ev = ev || event;
+                    oDiv.style.left = ev.clientX - x + 'px';
+                    oDiv.style.top = ev.clientY - y + 'px';
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                    if( oDiv.releaseCapture() ){
+                        oDiv.releaseCapture()
+                    }
+                };
+                return false
+            }
+        }
+    </script>
+</head>
+<body>
+asfdsgaes
+<div id="div1"></div>
+</body>
+</html>
