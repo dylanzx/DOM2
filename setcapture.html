@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setcapture</title>
+    <script>
+        window.onload = function () {
+            var aBtn = document.getElementsByTagName('input');
+            aBtn[0].setCapture();
+
+            aBtn[0].onclick = function () {
+                alert(1)
+            }
+            aBtn[1].onclick = function () {
+                alert(2)
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="button1">
+<input type="button" value="button2">
+</body>
+</html>
