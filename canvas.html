@@ -16,15 +16,15 @@
             var oC = document.getElementById('ca');
             var oGC = oC.getContext('2d');
             var num=0;
-            var arr = []
+            var arr = [];
 
             setInterval(function () {
-                num++
-                oGC.clearRect(0,0,oC.width,oC.height)
-                oGC.beginPath()
-                oGC.arc(num,num,10,0,Math.PI*2,true)
-                oGC.closePath()
-                oGC.strokeStyle = 'red'
+                num++;
+                oGC.clearRect(0,0,oC.width,oC.height);
+                oGC.beginPath();
+                oGC.arc(num,num,10,0,Math.PI*2,true);
+                oGC.closePath();
+                oGC.strokeStyle = 'red';
                 oGC.stroke()
             },1000/60)
 

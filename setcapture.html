@@ -7,10 +7,17 @@
         window.onload = function () {
             var aBtn = document.getElementsByTagName('input');
             aBtn[0].setCapture();
+            //setCapture()可以将鼠标事件锁定在指定的元素上，当元素捕获了鼠标事件后，该事件只能作用在当前元素上。
+            /*
+            * 当窗口失去焦点时，锁定的事件，自动就会取消。
+              alert也会导致事件的锁定取消。解决办法是在alert之后再次锁定。
+              鼠标右键也会导致事件解锁。
+             */
+            //setCapture只可以用于以下事件：onclick, ondblclick, onmousedown, onmouseover, onmouseout.
 
             aBtn[0].onclick = function () {
                 alert(1)
-            }
+            };
             aBtn[1].onclick = function () {
                 alert(2)
             }

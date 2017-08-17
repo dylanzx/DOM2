@@ -5,11 +5,11 @@
     <title>addclassName</title>
     <script>
         window.onload = function () {
-            /*            var oDiv = document.getElementById('div1');
-                        addClassName(oDiv, 'box');
-                        alert(oDiv.className);
+            var oDiv = document.getElementById('div1');
+            addClassName(oDiv, 'box1');
+            alert(oDiv.className);
 
-                        function addClassName(obj, className) {
+            /*            function addClassName(obj, className) {
 
                             if (obj.className === '') {
                                 obj.className = className;
@@ -30,30 +30,34 @@
                             return false;
                         }*/
 
-            var oDiv = document.getElementById('div1');
-            alert(oDiv.className === ' ');
-            addClassName(oDiv, 'box');
-            alert(oDiv.className.length);
+
+            /*            function addClassName(ele, sClass) {
+                            var classArr = ele.className;
+                            if (classArr === '') {
+                                ele.className = sClass;
+                                return;
+                            } else {
+                                classArr = classArr.split(/\s+/);
+                                for (var i = 0; i < classArr.length; i++) {
+                                    if (classArr[i] === sClass) {
+                                        return;
+                                    }
+                                }
+                                oDiv.className += ' ' + sClass;
+                            }
+                        }*/
 
             function addClassName(ele, sClass) {
-                var classArr = ele.className;
-                if (classArr === '') {
-                    ele.className = sClass;
-                    return;
-                } else {
-                    classArr = classArr.split(/\s+/);
-                    for (var i = 0; i < classArr.length; i++) {
-                        if (classArr[i] === sClass) {
-                            return;
-                        }
-                    }
-                    oDiv.className += ' ' + sClass;
+                var reg = new RegExp(sClass);
+                if (!reg.test(ele.className)) {
+                    ele.className += ' ' + sClass;
                 }
             }
+
         }
     </script>
 </head>
 <body>
-<div id="div1" class=" "></div>
+<div id="div1" class="box "></div>
 </body>
 </html>

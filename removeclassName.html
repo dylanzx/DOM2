@@ -6,35 +6,40 @@
     <script>
         window.onload = function () {
             var oDiv = document.getElementById('div1');
-
-            removeclassName(oDiv, 'box');
             alert(oDiv.className);
 
-            function removeclassName(obj, className) {
+            removeClassName(oDiv, 'box');
+            alert(oDiv.className);
 
-                if(obj.className == ''){
+/*            function removeclassName(obj, className) {
 
-                }else {
+                if (obj.className == '') {
+
+                } else {
                     var arr = obj.className.split(' ');
-                    var index = hasclassName(arr,className);
+                    var index = hasclassName(arr, className);
 
-                    if( index == -1 ){
+                    if (index == -1) {
 
-                    }else {
-                        arr.splice(index,1);
+                    } else {
+                        arr.splice(index, 1);
                         obj.className = arr.join(' ');
                     }
                 }
             }
 
-            function hasclassName(arr,className) {
-                for(var i= 0;i<arr.length;i++){
-                    if (arr[i] == className){
+            function hasclassName(arr, className) {
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] == className) {
                         return i;
-                    }else {
+                    } else {
                         return -1;
                     }
                 }
+            }*/
+            function removeClassName(ele, sClass) {
+                var reg = new RegExp(sClass);
+                ele.className = ele.className.replace(reg,'')
             }
         }
     </script>
