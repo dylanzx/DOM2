@@ -5,35 +5,55 @@
     <title>addclassName</title>
     <script>
         window.onload = function () {
+            /*            var oDiv = document.getElementById('div1');
+                        addClassName(oDiv, 'box');
+                        alert(oDiv.className);
+
+                        function addClassName(obj, className) {
+
+                            if (obj.className === '') {
+                                obj.className = className;
+                            } else {
+                                if (!hasClassName(obj, className)) {
+                                    obj.className += ' ' + className;
+                                }
+                            }
+                        }
+
+                        function hasClassName(obj, v) {
+                            var classNames = obj.className.split(/\s+/);
+                            for (var i = 0; i < classNames.length; i++) {
+                                if (classNames[i] === v) {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }*/
+
             var oDiv = document.getElementById('div1');
+            alert(oDiv.className === ' ');
             addClassName(oDiv, 'box');
-            alert(oDiv.className)
+            alert(oDiv.className.length);
 
-            function addClassName( obj, className ) {
-
-                if (obj.className == ''){
-                    obj.className = className;
-                } else{
-                    if(hasClassName( obj,className ) == -1){
-                        obj.className += ' '+ className;
-                    }else {}
-                }
-            }
-
-            function hasClassName( obj,v ) {
-                var classNames = obj.className.split(' ');
-                for(var i=0;i<classNames.length;i++){
-                    if (classNames[i] == v){
-                        return i;
-                    }else {
-                        return -1
+            function addClassName(ele, sClass) {
+                var classArr = ele.className;
+                if (classArr === '') {
+                    ele.className = sClass;
+                    return;
+                } else {
+                    classArr = classArr.split(/\s+/);
+                    for (var i = 0; i < classArr.length; i++) {
+                        if (classArr[i] === sClass) {
+                            return;
+                        }
                     }
+                    oDiv.className += ' ' + sClass;
                 }
             }
         }
     </script>
 </head>
 <body>
-<div id="div1" class="box box"></div>
+<div id="div1" class=" "></div>
 </body>
 </html>
