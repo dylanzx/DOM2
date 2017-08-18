@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <title>碰撞原理</title>
     <style>
-        #div1{
+        #div1 {
             width: 100px;
             height: 100px;
             background-color: red;
             position: absolute;
             z-index: 2;
         }
-        #img1{
+
+        #img1 {
             width: 200px;
             height: 200px;
             position: absolute;
@@ -21,24 +22,24 @@
     </style>
     <script>
         window.onload = function () {
-            var oDiv = document.getElementById('div1')
-            var oImg = document.getElementById('img1')
+            var oDiv = document.getElementById('div1');
+            var oImg = document.getElementById('img1');
 
-            drag( oDiv )
+            drag(oDiv);
 
-            function drag( obj ) {
-                obj.onmousedown = function ( ev ) {
+            function drag(obj) {
+                obj.onmousedown = function (ev) {
 
-                    var ev = ev || event
+                    var ev = ev || event;
                     var distX = ev.clientX - this.offsetLeft;
                     var distY = ev.clientY - this.offsetTop;
 
-                    if(obj.setCapture){
-                        obj.setCapture
+                    if (obj.setCapture) {
+                        obj.setCapture()
                     }
 
                     document.onmousemove = function (ev) {
-                        var ev = ev  || event
+                        var ev = ev || event;
                         var L = ev.clientX - distX;
                         var T = ev.clientY - distY;
 
@@ -49,39 +50,38 @@
 
                         var L2 = oImg.offsetLeft;
                         var T2 = oImg.offsetTop;
-                        var R2 = L2 +oImg.offsetWidth;
+                        var R2 = L2 + oImg.offsetWidth;
                         var B2 = T2 + oImg.offsetHeight;
 
-                        if ( R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2 ){
+                        if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
                             oImg.src = "images/1.jpg"
-                        }else {
+                        } else {
                             oImg.src = "images/2.jpg"
                         }
 
-                        if( L<100 ){
-                            L =0
+                        if (L < 100) {
+                            L = 0
                         }
-                        if( L >document.documentElement.clientWidth - obj.offsetWidth ){
+                        if (L > document.documentElement.clientWidth - obj.offsetWidth) {
                             L = document.documentElement.clientWidth - obj.offsetWidth
                         }
-                        if( T < 0 ){
-                            T =0
+                        if (T < 0) {
+                            T = 0
                         }
-                        if( T > document.documentElement.clientHeight - obj.offsetHeight ){
+                        if (T > document.documentElement.clientHeight - obj.offsetHeight) {
                             T = document.documentElement.clientHeight - obj.offsetHeight
                         }
-                        obj.style.left = L+ 'px'
+                        obj.style.left = L + 'px';
                         obj.style.top = T + 'px'
 
-                    }
+                    };
 
                     document.onmouseup = function () {
-                        document.onmousemove = document.onmouseup =  null;
-                        if( obj.releaseCapture ){
-                            obj.releaseCapture
+                        document.onmousemove = document.onmouseup = null;
+                        if (obj.releaseCapture) {
+                            obj.releaseCapture()
                         }
-
-                    }
+                    };
 
                     return false
                 }

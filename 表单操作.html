@@ -24,20 +24,20 @@
             oForm.city.onchange = function () {
                 alert(this.value)
             }
-            oForm.btn.onclick= function () {
+            oForm.btn.onclick = function () {
                 alert(oForm.a[0].checked)
             }
             oForm.btn1.onclick = function () {
-                for (var i=0;i<oForm.a.length;i++){
+                for (var i = 0; i < oForm.a.length; i++) {
                     oForm.a[i].checked = true;
                 }
             }
 
             oForm.btn2.onclick = function () {
-                for (var i=0;i<oForm.a.length;i++){
-                    if(oForm.a[i].checked){
+                for (var i = 0; i < oForm.a.length; i++) {
+                    if (oForm.a[i].checked) {
                         oForm.a[i].checked = false;
-                    }else {
+                    } else {
                         oForm.a[i].checked = true;
 
                     }

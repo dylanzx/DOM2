@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <title>拖拽改变层大小</title>
     <style>
-        div{
+        div {
             width: 100px;
             height: 100px;
             background-color: red;
             position: absolute;
             left: 700px;
-            top:200px;
+            top: 200px;
         }
     </style>
     <script>
         window.onload = function () {
             var oDiv = document.getElementById('div1');
 
-            oDiv.onmousedown = function ( ev ) {
+            oDiv.onmousedown = function (ev) {
                 var ev = ev || event;
                 var disW = this.offsetWidth;
                 var disL = this.offsetLeft;
                 var disX = ev.clientX;
 
-                if ( disX < disL + 10 ){
-                    document.onmousemove = function ( ev ) {
-                          var ev = ev || event
-                        oDiv.style.left = ev.clientX - disX +disL + 'px'
+                if (disX < disL + 10) {
+                    document.onmousemove = function (ev) {
+                        var ev = ev || event
+                        oDiv.style.left = ev.clientX - disX + disL + 'px'
                         oDiv.style.width = disW - ev.clientX + disX + 'px'
                     }
                     document.onmouseup = function (ev) {
@@ -34,8 +34,8 @@
                         document.onmousemove = document.onmouseup = null;
                     }
                 }
-                if ( disX > disL + disW - 10 ){
-                    document.onmousemove = function ( ev ) {
+                if (disX > disL + disW - 10) {
+                    document.onmousemove = function (ev) {
                         var ev = ev || event;
                         oDiv.style.width = disW + ev.clientX - disX + 'px';
                     }
@@ -45,13 +45,7 @@
                     }
                 }
                 return false
-
-
             }
-
-
-
-
         }
     </script>
 </head>
